@@ -144,7 +144,7 @@ class DynamicPeopleDetector(Node):
         
         #print("debug point cloud size: ", points.shape)
         
-        header.frame_id = "odom_lidar" 
+        header.frame_id = "odom" 
         pc2_msg = pc2.create_cloud_xyz32(header, points)
         self.pub_debug.publish(pc2_msg)
 
@@ -152,7 +152,7 @@ class DynamicPeopleDetector(Node):
         print("Found object at: ", center[0], center[1])
         
         marker = Marker()
-        marker.header.frame_id = "odom_lidar"
+        marker.header.frame_id = "odom"
         marker.header.stamp = self.get_clock().now().to_msg()
         marker.id = id
         marker.type = Marker.CYLINDER
